@@ -1,0 +1,62 @@
+{
+  "name": "fake-oranges",
+  "version": "1.0.0",
+  "description": "Quickly generate fake data using data model factories",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && npm run build:dist",
+    "build:dist": "babel src --ignore '*.test.js' -d dist",
+    "docs": "jsdoc:perFile 'src/**/*.js' -i 'src/**/*.test.js' -c jsdoc.json",
+    "docs:watch": "nodemon --watch src --exec 'npm run docs'",
+    "test": "gulp test",
+    "test:watch": "nodemon --watch src --exec 'npm run test'",
+    "lint": "gulp lint"
+  },
+  "repository": {
+    "url": "git+https://github.com/MemosaApp/fake-oranges.git",
+    "type": "git"
+  },
+  "keywords": [
+    "fake",
+    "data",
+    "factory"
+  ],
+  "author": "Ivan Montiel <idmontie@gmail.com> (https://github.com/idmontie)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MemosaApp/fake-oranges/issues"
+  },
+  "homepage": "https://github.com/MemosaApp/fake-oranges#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-memosa": "^1.0.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "eslint": "^3.12.2",
+    "eslint-config-memosa": "^1.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-sort-class-members": "^1.1.1",
+    "faker": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
+    "gulp-util": "^3.0.7",
+    "isparta": "^4.0.0",
+    "jsdoc": "^3.4.3",
+    "jsdoc-babel": "^0.3.0",
+    "jsdoc-memosa": "^1.1.0",
+    "jsdoc-to-markdown": "^2.0.1",
+    "jsdom": "^9.9.1",
+    "nodemon": "^1.11.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
+  }
+}
