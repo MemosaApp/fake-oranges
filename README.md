@@ -1,5 +1,7 @@
 # fake-oranges
 
+[![CircleCI](https://circleci.com/gh/MemosaApp/fake-oranges.svg?style=svg)](https://circleci.com/gh/MemosaApp/fake-oranges)
+
 Factory methods for creating fake data
 
 ## Installing
