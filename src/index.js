@@ -22,12 +22,17 @@ import types from './types';
  */
 const fake = (schema) => {
   return {
+    offset(offset) {
+      this._offset = offset;
+      return this;
+    },
     make(amount = 0) {
+      const offset = this._offset || 0;
       if (amount === 0) {
-        return factory(schema).generate(1)[0];
+        return factory(schema, offset).generate(1)[0];
       }
 
-      return factory(schema).generate(amount);
+      return factory(schema, offset).generate(amount);
     },
   };
 };

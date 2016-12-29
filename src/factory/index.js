@@ -1,4 +1,4 @@
-export default (originalSchema) => {
+export default (originalSchema, offset) => {
   const generateSchema = (schema, iteration) => {
     if (schema !== null && typeof schema === 'object') {
       const keyPairs = {};
@@ -18,7 +18,7 @@ export default (originalSchema) => {
   return {
     generate(amount) {
       return Array.from(Array(amount).keys()).map(i => {
-        return generateSchema(originalSchema, i);
+        return generateSchema(originalSchema, i + offset);
       });
     },
   };
