@@ -28,6 +28,11 @@ describe('Fake Oranges', () => {
       data: {},
     };
 
+    const schemaNull = {
+      id: sequential.string,
+      data: null,
+    };
+
     const schema3 = {
       id: sequential.loop(['10', '9', '8']),
     };
@@ -78,6 +83,12 @@ describe('Fake Oranges', () => {
       expect(item.id).to.be.a.string;
       expect(item.id).to.be.equal('0');
       expect(item.data).to.be.an.object;
+    });
+
+    it('builds null data', () => {
+      const item = fake(schemaNull).make();
+
+      expect(item.data).to.be.null;
     });
 
     it('builds sequential loops', () => {
