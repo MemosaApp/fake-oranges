@@ -1,6 +1,6 @@
 {
   "name": "fake-oranges",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Quickly generate fake data using data model factories",
   "main": "dist/index.js",
   "scripts": {

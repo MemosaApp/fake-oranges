@@ -18,4 +18,22 @@ describe('sequential type', () => {
     expect(sequential.offset(10)(1337)).to.be.equal(1347);
     expect(sequential.offset(10).string(1337)).to.be.equal('1347');
   });
+
+  it('picks sequentially from an array', () => {
+    const sa = sequential(['1', '4', '10', '20']);
+    expect(sa(0)).to.be.equal('1');
+    expect(sa(1)).to.be.equal('4');
+    expect(sa(2)).to.be.equal('10');
+    expect(sa(3)).to.be.equal('20');
+    expect(sa(4)).to.be.equal(null);
+  });
+
+  it('loops sequentially from an array', () => {
+    const sa = sequential.loop(['1', '4', '10', '20']);
+    expect(sa(0)).to.be.equal('1');
+    expect(sa(1)).to.be.equal('4');
+    expect(sa(2)).to.be.equal('10');
+    expect(sa(3)).to.be.equal('20');
+    expect(sa(4)).to.be.equal('1');
+  });
 });
