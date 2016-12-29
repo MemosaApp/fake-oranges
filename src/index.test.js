@@ -32,6 +32,10 @@ describe('Fake Oranges', () => {
       id: sequential.string,
       data: null,
     };
+  
+    const schema3 = {
+      id: sequential.loop(['10', '9', '8']),
+    };
 
     it('builds an object from a schema', () => {
       const item = fake(schema).make();
@@ -85,6 +89,21 @@ describe('Fake Oranges', () => {
       const item = fake(schemaNull).make();
 
       expect(item.data).to.be.null;
+    });
+      
+    it('builds sequential loops', () => {
+      const items = fake(schema3).make(10);
+
+      expect(items[0].id).to.be.equal('10');
+      expect(items[1].id).to.be.equal('9');
+      expect(items[2].id).to.be.equal('8');
+      expect(items[3].id).to.be.equal('10');
+      expect(items[4].id).to.be.equal('9');
+      expect(items[5].id).to.be.equal('8');
+      expect(items[6].id).to.be.equal('10');
+      expect(items[7].id).to.be.equal('9');
+      expect(items[8].id).to.be.equal('8');
+      expect(items[9].id).to.be.equal('10');
     });
   });
 });
