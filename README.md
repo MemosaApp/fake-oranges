@@ -12,16 +12,29 @@ yarn add fake-oranges
 
 ## Usage
 
-```
+```js
 import fake from 'fake-oranges';
 
+const { sequential, lorem } = fake.types;
+
 const schema = {
-  id: fake.types.sequential.offset(10).string,
-  title: fake.types.lorem.words,
+  id: sequential.offset(10).string,
+  title: lorem.words,
   data: {
     href: (id) => `/a/b/c/${sequential.offset(10).string(i)}`,
+    otherData: sequential(['a', 'b', 'c']),
+    otherDataLooped: sequential.loop(['a', 'b', 'c'])
   },
 };
+
+// Single item
+const item = fake(schema).make();
+// Array of items
+const items = fake(schema).make(100);
+// Array of a single item
+const singleItemAsArray = fake(schema).make(1);
+// Start at an offset:
+const singleItemAsArray = fake(schema).offset(100).make(1);
 ```
 
 All of the types available from [fakerjs](https://github.com/marak/Faker.js/) are
@@ -37,5 +50,9 @@ const example = {
   id2: sequential.offset(1);
   idString: sequential.string;
   id2String: sequential.offset(1).string,
+  pickAndThenNull: sequential(['a', 'b', 'c']),
+  pickAndThenLooped: sequential.loop(['a', 'b', 'c']),
+  pickStartAtB: sequential.offset(1)(['a', 'b', 'c']),
+  pickLoopedStartAtB: sequential.offset(1).loop(['a', 'b', 'c']),
 };
 ```
