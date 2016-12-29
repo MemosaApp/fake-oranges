@@ -1,6 +1,6 @@
 export default (originalSchema, offset) => {
   const generateSchema = (schema, iteration) => {
-    if (typeof schema === 'object') {
+    if (schema !== null && typeof schema === 'object') {
       const keyPairs = {};
 
       Object.keys(schema).forEach(key => {
