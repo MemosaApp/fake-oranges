@@ -75,5 +75,13 @@ describe('Fake Oranges', () => {
       expect(item.id).to.be.equal('0');
       expect(item.data).to.be.an.object;
     });
+
+    it('builds with an offset', () => {
+      const item = fake(schema2).offset(10).make();
+
+      expect(item.id).to.be.a.string;
+      expect(item.id).to.be.equal('10');
+      expect(item.data).to.be.an.object;
+    });
   });
 });
