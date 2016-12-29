@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var sequentialBuilder = void 0;
 /**
  * sequential
  *
@@ -23,6 +24,10 @@ Object.defineProperty(exports, "__esModule", {
 var sequential = function sequential() {
   var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  if (number instanceof Array) {
+    return sequentialBuilder(number, offset);
+  }
 
   return offset + number;
 };
@@ -53,6 +58,31 @@ sequential.offset = function () {
   });
 
   return s;
+};
+
+sequential.loop = function (arr) {
+  var arrOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  return sequentialBuilder(arr, arrOffset, true);
+};
+
+sequentialBuilder = function sequentialBuilder(arr) {
+  var arrOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var loop = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+  var extendedSequential = function extendedSequential() {
+    var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+    var index = number + arrOffset + offset;
+
+    if (loop) {
+      index %= arr.length;
+    }
+
+    return index >= arr.length ? null : arr[index];
+  };
+  return extendedSequential;
 };
 
 exports.default = sequential;

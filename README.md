@@ -1,6 +1,6 @@
 # fake-oranges
 
-[![CircleCI](https://circleci.com/gh/MemosaApp/fake-oranges.svg?style=svg)](https://circleci.com/gh/MemosaApp/fake-oranges)
+[![CircleCI](https://circleci.com/gh/MemosaApp/fake-oranges.svg?style=svg)](https://circleci.com/gh/MemosaApp/fake-oranges) [![npm version](https://badge.fury.io/js/fake-oranges.svg)](https://badge.fury.io/js/fake-oranges)
 
 Factory methods for creating fake data
 

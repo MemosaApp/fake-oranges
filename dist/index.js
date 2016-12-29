@@ -39,14 +39,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var fake = function fake(schema) {
   return {
+    offset: function offset(_offset) {
+      this._offset = _offset;
+      return this;
+    },
     make: function make() {
       var amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
+      var offset = this._offset || 0;
       if (amount === 0) {
-        return (0, _factory2.default)(schema).generate(1)[0];
+        return (0, _factory2.default)(schema, offset).generate(1)[0];
       }
 
-      return (0, _factory2.default)(schema).generate(amount);
+      return (0, _factory2.default)(schema, offset).generate(amount);
     }
   };
 };

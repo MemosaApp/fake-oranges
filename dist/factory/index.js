@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-exports.default = function (originalSchema) {
+exports.default = function (originalSchema, offset) {
   var generateSchema = function generateSchema(schema, iteration) {
-    if ((typeof schema === 'undefined' ? 'undefined' : _typeof(schema)) === 'object') {
+    if (schema !== null && (typeof schema === 'undefined' ? 'undefined' : _typeof(schema)) === 'object') {
       var _ret = function () {
         var keyPairs = {};
 
@@ -32,7 +32,7 @@ exports.default = function (originalSchema) {
   return {
     generate: function generate(amount) {
       return Array.from(Array(amount).keys()).map(function (i) {
-        return generateSchema(originalSchema, i);
+        return generateSchema(originalSchema, i + offset);
       });
     }
   };
