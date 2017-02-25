@@ -19,7 +19,7 @@ const { sequential, lorem } = fake.types;
 
 const schema = {
   id: sequential.offset(10).string,
-  title: lorem.words,
+  title: lorem.words(),
   data: {
     href: (id) => `/a/b/c/${sequential.offset(10).string(i)}`,
     otherData: sequential(['a', 'b', 'c']),
@@ -39,6 +39,8 @@ const singleItemAsArray = fake(schema).offset(100).make(1);
 
 All of the types available from [fakerjs](https://github.com/marak/Faker.js/) are
 available from `fake.types`.
+Call them as functions as you normally would, they will
+be lazily evaluated when you call `make()`.
 
 We have added the following types for convenience:
 
